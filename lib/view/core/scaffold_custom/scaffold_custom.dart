@@ -12,10 +12,9 @@ class ScaffoldCustom extends StatelessWidget {
   final Widget? bottomNavigationBar;
   final CustomAppBar? appBarCustom;
   final bool? condition;
-
   final bool? isExtend;
-
   final Widget? floatingActionButton;
+  final Color? background;
 
   const ScaffoldCustom({
     Key? key,
@@ -28,6 +27,7 @@ class ScaffoldCustom extends StatelessWidget {
     this.condition = true,
     this.isExtend = false,
     this.floatingActionButton,
+    this.background
   }) : super(key: key);
 
   @override
@@ -37,7 +37,8 @@ class ScaffoldCustom extends StatelessWidget {
       extendBodyBehindAppBar: isExtend!,
       resizeToAvoidBottomInset: true,
       appBar: appBarCustom,
-      backgroundColor: ThemeCubit.get(context).isDark ? darkBackground : white,
+      backgroundColor: background,
+      // backgroundColor: ThemeCubit.get(context).isDark ? darkBackground : white,
       body: body,
       bottomNavigationBar: bottomNavigationBar,
       floatingActionButton: floatingActionButton,

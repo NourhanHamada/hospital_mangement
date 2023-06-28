@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hospital_mangement/view/screens/attendance_screens/touch_id_sensor_screen.dart';
+import 'package:hospital_mangement/view_model/cubit/attendance/attendance_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/password_field_cubit/password_field_cubit.dart';
 import 'package:timezone/data/latest.dart' as time_zone;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,6 +28,9 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => AttendanceCubit(),
+        ),
         BlocProvider(
           create: (context) => OnboardCubit(),
         ),
@@ -73,13 +78,14 @@ class MyApp extends StatelessWidget {
           navigatorKey: NavigationService.instance.navigationKey,
           initialRoute: '/',
           routes: {
-            '/': (context) => const SplashScreen(),
+            // '/': (context) => const SplashScreen(),
           },
           debugShowCheckedModeBanner: false,
           theme: buildLightMode(context),
           darkTheme: buildDarkMode(context),
           themeMode:
               ThemeCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
+          home: const TouchIdSensorScreen(),
         );
       },
     );
