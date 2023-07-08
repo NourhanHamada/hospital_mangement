@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hospital_mangement/view/constant/extensions.dart';
 import 'package:hospital_mangement/view/constant/fonts.dart';
 import 'package:hospital_mangement/view/core/buttons/main_button.dart';
 import 'package:hospital_mangement/view/core/textfields/custom_text_form_filed.dart';
 import '../../../view_model/cubit/password_field_cubit/password_field_cubit.dart';
 import '../../constant/color_manager.dart';
 import '../../core/custom_text.dart';
+import '../../screens/attendance_screens/touch_id_sensor_screen.dart';
 
 
 class LoginLowerSection extends StatefulWidget {
@@ -119,6 +121,7 @@ class _LoginLowerSectionState extends State<LoginLowerSection> {
             onTap: () {
               if (key.currentState!.validate()) {
                 key.currentState!.save();
+                context.push(const TouchIdSensorScreen());
                 // context.push();
                 debugPrint('Validate Success');
               }else {

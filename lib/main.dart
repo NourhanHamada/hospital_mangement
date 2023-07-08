@@ -78,14 +78,14 @@ class MyApp extends StatelessWidget {
           navigatorKey: NavigationService.instance.navigationKey,
           initialRoute: '/',
           routes: {
-            // '/': (context) => const SplashScreen(),
+            '/': (context) => const SplashScreen(),
           },
           debugShowCheckedModeBanner: false,
           theme: buildLightMode(context),
           darkTheme: buildDarkMode(context),
           themeMode:
               ThemeCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
-          home: const TouchIdSensorScreen(),
+          // home: const TouchIdSensorScreen(),
         );
       },
     );

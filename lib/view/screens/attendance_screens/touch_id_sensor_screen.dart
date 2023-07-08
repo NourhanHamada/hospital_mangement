@@ -19,7 +19,6 @@ class _TouchIdSensorScreenState extends State<TouchIdSensorScreen> {
   final String text2 = 'Your attendance has been registered';
   bool isAttend = false;
   bool isVisible = false;
-  bool isAttendance = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,6 @@ class _TouchIdSensorScreenState extends State<TouchIdSensorScreen> {
                         isAttend = !isAttend;
                         isVisible = true;
                         text = text2;
-                        isAttendance = true;
                       });
                     },
                     child: AnimatedSwitcher(
@@ -52,7 +50,7 @@ class _TouchIdSensorScreenState extends State<TouchIdSensorScreen> {
                           child: child,
                         );
                       },
-                      child: isAttendance
+                      child: isAttend
                           ? SizedBox(
                         height: 155,
                         width: 155,
@@ -86,7 +84,7 @@ class _TouchIdSensorScreenState extends State<TouchIdSensorScreen> {
                     height: 48.h,
                   ),
                   SizedBox(
-                    width: context.screenWidth - 44,
+                    width: context.screenWidth - 44.w,
                     child: AnimatedAlign(
                       alignment: isAttend == false
                           ? Alignment.centerLeft
@@ -104,7 +102,7 @@ class _TouchIdSensorScreenState extends State<TouchIdSensorScreen> {
                         child: CustomText(
                           text: text,
                           key: ValueKey<String>(text),
-                          fontSize: 16,
+                          fontSize: 14,
                         ),
                       ),
                     ),
