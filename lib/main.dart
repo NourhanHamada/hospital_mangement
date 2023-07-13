@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hospital_mangement/view/screens/attendance_screens/touch_id_sensor_screen.dart';
+import 'package:hospital_mangement/view/screens/attendance_screens/attendance_screen.dart';
 import 'package:hospital_mangement/view_model/cubit/attendance/attendance_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/password_field_cubit/password_field_cubit.dart';
 import 'package:timezone/data/latest.dart' as time_zone;
@@ -9,7 +9,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hospital_mangement/view/constant/navigation_service.dart';
 import 'package:hospital_mangement/view/constant/observer.dart';
 import 'package:hospital_mangement/view/constant/theme.dart';
-import 'package:hospital_mangement/view/screens/splash_screen.dart';
 import 'package:hospital_mangement/view_model/cubit/auth/login/login_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/forget_password/forget_password_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/onboard/onboard_cubit.dart';
@@ -23,7 +22,8 @@ void main() async {
   await CacheHelper.init();
   await DioHelper.init();
   Bloc.observer = MyBlocObserver();
-  Intl.defaultLocale = 'ar_SA';
+  // Intl.defaultLocale = 'ar_SA';
+  Intl.defaultLocale = 'en_US';
   time_zone.initializeTimeZones();
   runApp(
     MultiBlocProvider(
@@ -78,7 +78,7 @@ class MyApp extends StatelessWidget {
           navigatorKey: NavigationService.instance.navigationKey,
           initialRoute: '/',
           routes: {
-            '/': (context) => const SplashScreen(),
+            '/': (context) => const AttendanceScreen(),
           },
           debugShowCheckedModeBanner: false,
           theme: buildLightMode(context),

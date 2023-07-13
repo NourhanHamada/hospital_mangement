@@ -6,3 +6,5 @@ abstract class AttendanceState {}
 class AttendanceInitial extends AttendanceState {}
 
 class AttendanceDone extends AttendanceState {}
+
+class LeavingDone extends AttendanceState {}

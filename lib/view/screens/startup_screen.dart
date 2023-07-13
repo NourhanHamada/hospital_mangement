@@ -4,7 +4,7 @@ import 'package:hospital_mangement/view/constant/extensions.dart';
 import 'package:hospital_mangement/view/constant/fonts.dart';
 import 'package:hospital_mangement/view/core/custom_text.dart';
 import 'package:hospital_mangement/view/core/scaffold_custom/background_scaffold.dart';
-import 'package:hospital_mangement/view/screens/login_screen.dart';
+import 'package:hospital_mangement/view/screens/startup_screens/login_screen.dart';
 
 class StartupScreen extends StatelessWidget {
   const StartupScreen({super.key});

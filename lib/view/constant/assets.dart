@@ -15,8 +15,9 @@ const String attend = 'assets/images/attend.svg';
 // Icons
 const lock = 'assets/icons/lock.svg';
 const openEye = 'assets/icons/open_eye.svg';
-const String notifications = 'assets/icons/notifications.png';
-const String notification = 'assets/icons/notification.png';
+// const String notifications = 'assets/icons/notifications.png';
+// const String notification = 'assets/icons/notification.svg';
+const String notification = 'assets/icons/noti.svg';
 const String arrowBack = 'assets/icons/left_arrow.png';
 const String arrow = 'assets/icons/arow.svg';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hospital_mangement/view/constant/data.dart';
 import 'package:hospital_mangement/view/constant/extensions.dart';
 import 'package:hospital_mangement/view/constant/fonts.dart';
 import 'package:hospital_mangement/view/core/buttons/main_button.dart';
@@ -37,6 +38,13 @@ class _LoginLowerSectionState extends State<LoginLowerSection> {
                   controller: mobileController,
                   isPassword: false,
                   keyboardType: TextInputType.phone,
+                  validator: (value){
+                    if(value!.trim().isEmpty){
+                      return 'Please enter phone number';
+                    } else if(!RegExp(validationPhone).hasMatch(value.trim())){
+                      return 'Phone Number must be valid';
+                    }
+                  },
                   prefixIcon: const Icon(
                     Icons.phone_outlined,
                     color: mainColor,
@@ -74,20 +82,26 @@ class _LoginLowerSectionState extends State<LoginLowerSection> {
                   validator: (value) {
                     if (value!.trim().isEmpty) {
                       return "Password must be not Empty";
-                    } else if (!value.trim().contains(RegExp(r'[A-Z]'))) {
+                    }
+                    else if (!value.trim().contains(RegExp(validatePasswordUpperCase))) {
                       return "Password must Contains UpperCase Letter";
-                    } else if (!value.trim().contains(RegExp(r'[0-9]'))) {
+                    }
+                    else if (!value.trim().contains(RegExp(validatePasswordDigits))) {
                       return "Password must Contains Digit";
-                    } else if (!value.trim().contains(RegExp(r'[a-z]'))) {
+                    }
+                    else if (!value.trim().contains(RegExp(validatePasswordLowerCase))) {
                       return "Password must Contains LowerCase Letter";
-                    } else if (!value
+                    }
+                    else if (!value
                         .trim()
-                        .contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+                        .contains(RegExp(validatePasswordSpecialChar))) {
                       return "Password must Contains Special Character";
-                    } else if (value.trim().length < 8) {
+                    }
+                    else if (value.trim().length < 8) {
                       return "Password must be more 8 Letters";
-                    } else if (!RegExp(
-                        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~.]).{8,}$')
+                    }
+                    else if (!RegExp(
+                        validationPassword)
                         .hasMatch(value.trim())) {
                       return "Password is not Valid";
                     }

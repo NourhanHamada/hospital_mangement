@@ -13,6 +13,7 @@ const Color lightGreen = Color(0xff06e173);
 const Color lightOrange = Color(0xfff17a12);
 const Color red = Color(0xffe63a3a);
 const Color redNote = Color(0xfff36d13);
+const Color orange = Color(0xffEF7416);
 
 // accept and busy buttons.
 const Color greenButton = Color(0xff1ad672);
@@ -22,7 +23,7 @@ const Color orangeButton = Color(0xffec9511);
 const Color blueCard = Color(0xff5f9edc);
 const Color lightBlueCard = Color(0xff5fdcdc);
 const Color mauveCard = Color(0xff915fdc);
-const Color brownCard = Color(0xffdc915f);
+const Color brownCard = Color(0xffF36D13);
 const Color greenCard = Color(0xff5fdc89);
 
 // Core Colors.
