@@ -37,9 +37,15 @@ class ScaffoldCustom extends StatelessWidget {
       extendBodyBehindAppBar: isExtend!,
       resizeToAvoidBottomInset: true,
       appBar: appBarCustom,
-      backgroundColor: background,
+      // backgroundColor: background,
+      backgroundColor: grey200,
       // backgroundColor: ThemeCubit.get(context).isDark ? darkBackground : white,
-      body: body,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: body,
+        ),
+      ),
       bottomNavigationBar: bottomNavigationBar,
       floatingActionButton: floatingActionButton,
     );

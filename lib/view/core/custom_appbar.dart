@@ -6,6 +6,7 @@ import '../constant/fonts.dart';
 import 'custom_text.dart';
 
 //used to make appbar in most of project
+//ignore: must_be_immutable
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(60);

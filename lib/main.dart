@@ -2,7 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital_mangement/view/screens/attendance_screens/attendance_screen.dart';
+import 'package:hospital_mangement/view/screens/home_screen.dart';
+import 'package:hospital_mangement/view/screens/startup_screens/login_screen.dart';
+import 'package:hospital_mangement/view/screens/startup_screens/splash_screen.dart';
 import 'package:hospital_mangement/view_model/cubit/attendance/attendance_cubit.dart';
+import 'package:hospital_mangement/view_model/cubit/home/home_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/password_field_cubit/password_field_cubit.dart';
 import 'package:timezone/data/latest.dart' as time_zone;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -46,6 +50,9 @@ void main() async {
         BlocProvider(
           create: (context) => PasswordFieldCubit(),
         ),
+        BlocProvider(
+          create: (context) => HomeCubit(context),
+        ),
       ],
       child: EasyLocalization(
         path: "resources/langs",
@@ -78,7 +85,8 @@ class MyApp extends StatelessWidget {
           navigatorKey: NavigationService.instance.navigationKey,
           initialRoute: '/',
           routes: {
-            '/': (context) => const AttendanceScreen(),
+            '/': (context) => const HomeScreen(),
+            // '/': (context) => const LoginScreen(),
           },
           debugShowCheckedModeBanner: false,
           theme: buildLightMode(context),

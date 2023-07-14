@@ -10,7 +10,7 @@ class BackgroundScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldCustom(
+    return Scaffold(
       body: Stack(
         children: [
           Image.asset(

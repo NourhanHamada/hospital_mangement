@@ -6,11 +6,11 @@ import 'custom_button.dart';
 
 // ignore: must_be_immutable
 class MainButton extends StatelessWidget {
-   MainButton({
+  MainButton({
     super.key,
     required this.title,
     required this.onTap,
-     this.width,
+    this.width,
   });
 
   final String title;
@@ -19,16 +19,60 @@ class MainButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomButton(
-      color: mainColor,
-      onClick: onTap,
-      width: width,
-      title: CustomText(
-        color: whiteColor,
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-        text: title,
-      ),
+    // return SizedBox(
+    //   width: width ?? ScreenUtil().screenWidth,
+    //   child: ElevatedButton(
+    //     onPressed: onTap,
+    //     style: ElevatedButton.styleFrom(
+    //       backgroundColor: mainColor,
+    //       shape: RoundedRectangleBorder(
+    //         borderRadius: BorderRadius.circular(10)
+    //       ),
+    //     ),
+    //     child: CustomText(
+    //       text: title,
+    //       fontSize: 12,
+    //       fontWeight: FontWeight.w400,
+    //       color: white,
+    //     ),
+    //   ),
+    // );
+
+    return Column(
+      children: [
+        SizedBox(
+          width: width ?? ScreenUtil().screenWidth,
+          child: ElevatedButton(
+            onPressed: (){
+              print('HELLO');
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: mainColor,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+            ),
+            child: CustomText(
+              text: title,
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: white,
+            ),
+          ),
+        ),
+
+        //================
+        CustomButton(
+          color: mainColor,
+          onClick: onTap,
+          width: width,
+          title: CustomText(
+            color: whiteColor,
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+            text: title,
+          ),
+        ),
+      ],
     );
   }
 }

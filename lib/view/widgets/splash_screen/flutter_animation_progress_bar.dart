@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:hospital_mangement/view/constant/extensions.dart';
-import 'package:hospital_mangement/view/screens/startup_screen.dart';
+import 'package:hospital_mangement/view/screens/startup_screens/startup_screen.dart';
 import '../../constant/color_manager.dart';
 
 class FlutterAnimationProgressBar extends StatefulWidget {

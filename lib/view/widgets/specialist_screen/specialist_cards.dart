@@ -49,7 +49,7 @@ class SpecialistCards extends StatelessWidget {
               child: Cards(
                 height: 158,
                 color: greenCard,
-                icon: Image.asset(checkbox),
+                icon: Image.asset(tasks),
                 text: 'Tasks',
               ),
             ),

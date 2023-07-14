@@ -30,71 +30,66 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   Widget build(BuildContext context) {
     AttendanceCubit attendanceCubit = BlocProvider.of(context, listen: true);
     return ScaffoldCustom(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              const CustomizedAppBar(),
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    10,
+      body: Column(
+        children: [
+          const CustomizedAppBar(),
+          Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                10,
+              ),
+            ),
+            color: simonColor,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 8,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    text: 'Note',
+                    color: orangeRed,
+                    fontWeight: FontWeight.w500,
                   ),
-                ),
-                color: simonColor,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
+                  CustomText(
+                    text:
+                        'Details note : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s ',
+                    color: black,
+                    fontSize: btnFont14,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomText(
-                        text: 'Note',
-                        color: orangeRed,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      CustomText(
-                        text:
-                            'Details note : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s ',
-                        color: black,
-                        fontSize: btnFont14,
-                      ),
-                    ],
-                  ),
-                ),
+                ],
               ),
-              SizedBox(
-                height: 24.h,
-              ),
-              AttendanceCard(
-                text: 'Attendance',
-                time: attendanceCubit.timeAttend,
-                icon: attendanceCubit.isAttend ? Icons.done : Icons.close,
-                color: attendanceCubit.isAttend ? greenButton : orange,
-                onPress: () {
-                  context.push(const TouchIdSensorScreen());
-                  attendanceCubit.attendanceDone();
-                },
-              ),
-              SizedBox(
-                height: 24.h,
-              ),
-              AttendanceCard(
-                text: 'Leaving',
-                time: attendanceCubit.timeLeave,
-                icon: attendanceCubit.isLeaving ? Icons.done : Icons.close,
-                color: attendanceCubit.isLeaving ? greenButton : orange,
-                onPress: () {
-                  context.push(const TouchIdSensorScreen());
-                  attendanceCubit.leavingDone();
-                },
-              ),
-            ],
+            ),
           ),
-        ),
+          SizedBox(
+            height: 24.h,
+          ),
+          AttendanceCard(
+            text: 'Attendance',
+            time: attendanceCubit.timeAttend,
+            icon: attendanceCubit.isAttend ? Icons.done : Icons.close,
+            color: attendanceCubit.isAttend ? greenButton : orange,
+            onPress: () {
+              context.push(const TouchIdSensorScreen());
+              attendanceCubit.attendanceDone();
+            },
+          ),
+          SizedBox(
+            height: 24.h,
+          ),
+          AttendanceCard(
+            text: 'Leaving',
+            time: attendanceCubit.timeLeave,
+            icon: attendanceCubit.isLeaving ? Icons.done : Icons.close,
+            color: attendanceCubit.isLeaving ? greenButton : orange,
+            onPress: () {
+              context.push(const TouchIdSensorScreen());
+              attendanceCubit.leavingDone();
+            },
+          ),
+        ],
       ),
     );
   }

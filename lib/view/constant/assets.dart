@@ -20,12 +20,17 @@ const openEye = 'assets/icons/open_eye.svg';
 const String notification = 'assets/icons/noti.svg';
 const String arrowBack = 'assets/icons/left_arrow.png';
 const String arrow = 'assets/icons/arow.svg';
+const String user2 = 'assets/icons/user2.svg';
+const String calendar = 'assets/icons/calendar.svg';
+const String done = 'assets/icons/done.svg';
+const String busy = 'assets/icons/busy.svg';
 
 // Cards
 const String calls = 'assets/icons/calls.png';
-const String checkbox = 'assets/icons/checkbox.png';
+const String tasks = 'assets/icons/checkbox.png';
 const String document = 'assets/icons/document.png';
-// const String fingerPrint = 'assets/icons/fingerprint.png';
+const String fingerPrintIcon = 'assets/icons/fingerprint.png';
+const String cases = 'assets/icons/cases.svg';
 
 
 

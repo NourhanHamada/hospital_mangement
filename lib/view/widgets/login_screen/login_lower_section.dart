@@ -5,6 +5,7 @@ import 'package:hospital_mangement/view/constant/extensions.dart';
 import 'package:hospital_mangement/view/constant/fonts.dart';
 import 'package:hospital_mangement/view/core/buttons/main_button.dart';
 import 'package:hospital_mangement/view/core/textfields/custom_text_form_filed.dart';
+import 'package:hospital_mangement/view/screens/home_screen.dart';
 import '../../../view_model/cubit/password_field_cubit/password_field_cubit.dart';
 import '../../constant/color_manager.dart';
 import '../../core/custom_text.dart';
@@ -131,11 +132,12 @@ class _LoginLowerSectionState extends State<LoginLowerSection> {
           const SizedBox(
             height: 30,
           ),
-          MainButton(title: 'Login',
+          MainButton(
+            title: 'Login',
             onTap: () {
               if (key.currentState!.validate()) {
                 key.currentState!.save();
-                context.push(const TouchIdSensorScreen());
+                context.push(const HomeScreen());
                 // context.push();
                 debugPrint('Validate Success');
               }else {

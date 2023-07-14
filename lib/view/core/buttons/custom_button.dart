@@ -4,6 +4,7 @@ import '../../constant/color_manager.dart';
 import '../../constant/fonts.dart';
 
 //used in most of project to make button
+// ignore: must_be_immutable
 class CustomButton extends StatelessWidget {
   void Function()? onClick;
   Widget title;

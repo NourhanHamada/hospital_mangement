@@ -15,7 +15,6 @@ class CustomAppBar extends StatelessWidget {
     return AppBar(
       leading: IconButton(
         onPressed: () {
-          // GoRouter.of(context).pop();
           Navigator.pop(context);
         },
         icon: Image.asset(arrowBack),

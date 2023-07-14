@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../constant/assets.dart';
 import '../constant/color_manager.dart';
 import '../constant/fonts.dart';
@@ -43,8 +42,8 @@ class _CustomAppBarState extends State<CustomizedAppBar>
           Row(
             children: [
               Container(
-                width: 35,
-                height: 35,
+                width: 35.sp,
+                height: 35.sp,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(
                     5,
@@ -72,19 +71,15 @@ class _CustomAppBarState extends State<CustomizedAppBar>
               ),
             ],
           ),
-          Column(
-            children: [
-              RotationTransition(
-                turns: Tween(begin: 0.0, end: -.1)
-                    .chain(
-                  CurveTween(curve: Curves.elasticIn),
-                )
-                    .animate(animationController),
-                child: SvgPicture.asset(
-                  notification,
-                ),
-              ),
-            ],
+          RotationTransition(
+            turns: Tween(begin: 0.0, end: -.1)
+                .chain(
+              CurveTween(curve: Curves.elasticIn),
+            )
+                .animate(animationController),
+            child: SvgPicture.asset(
+              notification,
+            ),
           ),
         ],
       ),
