@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hospital_mangement/view/constant/extensions.dart';
 import '../constant/color_manager.dart';
 import '../constant/fonts.dart';
 import 'custom_text.dart';
@@ -18,10 +19,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Color colorTxtAppBar;
   Widget? leading;
 
-  CustomAppBar({
+  CustomAppBar({super.key,
     this.showLeading = true,
     this.title = " ",
-     this.onPressed,
+    this.onPressed,
     this.colorAppBar = transparent,
     this.colorTxtAppBar = whiteColor,
     this.actions = const [],
@@ -31,7 +32,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: leading,
+      leading: leading ?? IconButton(
+        onPressed: () {
+          context.pop();
+        },
+        icon:
+         const Icon(
+            Icons.arrow_back,
+            color: black,
+          ),
+        ),
       elevation: 0,
       backgroundColor: colorAppBar,
       centerTitle: true,
@@ -39,7 +49,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding: EdgeInsets.only(top: 0.h),
         child: CustomText(
           text: title.tr().toString(),
-          color: colorTxtAppBar,
+          // color: colorTxtAppBar,
+          color: black,
           fontSize: textFont18,
         ),
       ),

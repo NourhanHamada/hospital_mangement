@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../view_model/cubit/theme/theme_cubit.dart';
 import '../../constant/color_manager.dart';
 import '../custom_appbar.dart';
 
@@ -42,7 +41,7 @@ class ScaffoldCustom extends StatelessWidget {
       // backgroundColor: ThemeCubit.get(context).isDark ? darkBackground : white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.only(bottom: 24, left: 24, right: 24,),
           child: body,
         ),
       ),

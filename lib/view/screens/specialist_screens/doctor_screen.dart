@@ -7,6 +7,7 @@ import 'package:hospital_mangement/view/constant/extensions.dart';
 import 'package:hospital_mangement/view/screens/specialist_screens/calls_screen.dart';
 import '../../core/customized_appbar.dart';
 import '../../widgets/home_screen/specialist_card.dart';
+import 'cases_screen.dart';
 
 class DoctorScreen extends StatelessWidget {
   const DoctorScreen({super.key});
@@ -21,6 +22,7 @@ class DoctorScreen extends StatelessWidget {
           children: [
             Column(
               children: [
+                //Done
                 SpecialistCard(
                   cardColor: blueCard,
                   context: context,
@@ -99,7 +101,9 @@ class DoctorScreen extends StatelessWidget {
           width: ScreenUtil().screenWidth - 40,
           isRow: true,
           icon: SvgPicture.asset(cases),
-          onTap: () {},
+          onTap: () {
+            context.push(const CasesScreen());
+          },
           text: 'Cases',
           subText: '',
         ),
