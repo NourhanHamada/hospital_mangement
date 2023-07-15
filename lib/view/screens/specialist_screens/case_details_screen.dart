@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hospital_mangement/view/constant/color_manager.dart';
+import 'package:hospital_mangement/view/constant/extensions.dart';
 import 'package:hospital_mangement/view/core/buttons/main_button.dart';
 import 'package:hospital_mangement/view/core/custom_appbar.dart';
 import 'package:hospital_mangement/view/core/custom_text.dart';
 import 'package:hospital_mangement/view/core/scaffold_custom/scaffold_custom.dart';
+import 'package:hospital_mangement/view/screens/home_screen.dart';
+import 'package:hospital_mangement/view/screens/specialist_screens/select_nurse_screen.dart';
 import 'package:hospital_mangement/view/widgets/home_screen/calls_card.dart';
 import '../../widgets/home_screen/case_details_item.dart';
 import '../../widgets/home_screen/request_case_details_sheet.dart';
@@ -160,8 +163,10 @@ class CaseDetailsScreen extends StatelessWidget {
                       icon: Icons.add,
                       iconSize: 24,
                       secondIcon: '',
-                      width: 120,
-                      onTap: () {},
+                      width: ScreenUtil().screenWidth / 3,
+                      onTap: () {
+                        context.push(SelectNurseScreen());
+                      },
                     ),
                     SizedBox(
                       width: 16.w,
@@ -172,7 +177,7 @@ class CaseDetailsScreen extends StatelessWidget {
                       icon: Icons.add,
                       iconSize: 24,
                       secondIcon: '',
-                      width: 120,
+                      width: ScreenUtil().screenWidth / 3,
                       onTap: () {
                         showModalBottomSheet(
                           isScrollControlled: true,
@@ -196,7 +201,9 @@ class CaseDetailsScreen extends StatelessWidget {
           Align(
             alignment: FractionalOffset.bottomCenter,
             child: MainButton(
-              onTap: () {},
+              onTap: () {
+                context.push(const HomeScreen());
+              },
               title: 'End Case',
               color: red,
             ),

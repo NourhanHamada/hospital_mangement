@@ -26,7 +26,7 @@ class DoctorScreen extends StatelessWidget {
                 SpecialistCard(
                   cardColor: blueCard,
                   context: context,
-                  height: 175,
+                  height: 175.h,
                   isRow: false,
                   text: 'Calls',
                   subText: 'You have +1 Request',
@@ -44,7 +44,7 @@ class DoctorScreen extends StatelessWidget {
                 SpecialistCard(
                   cardColor: mauveCard,
                   context: context,
-                  height: 140,
+                  height: 140.h,
                   isRow: false,
                   onTap: () {},
                   text: 'Reports',
@@ -61,7 +61,7 @@ class DoctorScreen extends StatelessWidget {
                 SpecialistCard(
                   cardColor: greenCard,
                   context: context,
-                  height: 140,
+                  height: 140.h,
                   isRow: false,
                   onTap: () {},
                   text: 'Tasks',
@@ -77,7 +77,7 @@ class DoctorScreen extends StatelessWidget {
                 SpecialistCard(
                   cardColor: lightBlueCard,
                   context: context,
-                  height: 175,
+                  height: 175.h,
                   isRow: false,
                   onTap: () {},
                   text: 'attendance - leaving',

@@ -87,7 +87,7 @@ class SpecialistCard extends StatelessWidget {
                 CustomText(
                   text: text,
                   color: white,
-                  fontSize: textFont16,
+                  fontSize: textFont14,
                 ),
                 SizedBox(
                   height: 4.h,

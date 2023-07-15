@@ -22,32 +22,13 @@ class MainButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return SizedBox(
-    //   width: width ?? ScreenUtil().screenWidth,
-    //   child: ElevatedButton(
-    //     onPressed: onTap,
-    //     style: ElevatedButton.styleFrom(
-    //       backgroundColor: mainColor,
-    //       shape: RoundedRectangleBorder(
-    //         borderRadius: BorderRadius.circular(10)
-    //       ),
-    //     ),
-    //     child: CustomText(
-    //       text: title,
-    //       fontSize: 12,
-    //       fontWeight: FontWeight.w400,
-    //       color: white,
-    //     ),
-    //   ),
-    // );
-
     return CustomButton(
       color: color ?? mainColor,
       onClick: onTap,
       width: width,
       title: CustomText(
         color: whiteColor,
-        fontSize: textFont16,
+        fontSize: textFont14.sp,
         fontWeight: FontWeight.w400,
         text: title,
       ),

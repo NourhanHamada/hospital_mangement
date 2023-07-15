@@ -132,7 +132,7 @@ class MedicalMeasurementScreen extends StatelessWidget {
                 borderSide: BorderSide.none
               ),
               hintText: 'Add Note',
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                 color: grey600
               ),
                   alignLabelWithHint: true,

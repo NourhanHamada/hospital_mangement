@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hospital_mangement/view/screens/specialist_screens/case_details_screen.dart';
 import 'package:hospital_mangement/view/screens/specialist_screens/medical_measurement_screen.dart';
+import 'package:hospital_mangement/view/screens/specialist_screens/select_nurse_screen.dart';
 import 'package:hospital_mangement/view_model/cubit/attendance/attendance_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/home/home_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/password_field_cubit/password_field_cubit.dart';
@@ -83,7 +84,7 @@ class MyApp extends StatelessWidget {
           navigatorKey: NavigationService.instance.navigationKey,
           initialRoute: '/',
           routes: {
-            '/': (context) => const MedicalMeasurementScreen(),
+            '/': (context) => SelectNurseScreen(),
             // '/': (context) => const LoginScreen(),
           },
           debugShowCheckedModeBanner: false,

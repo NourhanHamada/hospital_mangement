@@ -58,7 +58,7 @@ class _CustomAppBarState extends State<CustomizedAppBar>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomText(
-                    text: 'Ebrahem Elzainy',
+                    text: 'Ebrahim Elzainy',
                     color: black,
                     fontWeight: FontWeight.w400,
                   ),

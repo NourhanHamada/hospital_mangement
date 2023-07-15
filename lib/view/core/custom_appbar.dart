@@ -19,7 +19,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Color colorTxtAppBar;
   Widget? leading;
 
-  CustomAppBar({super.key,
+  CustomAppBar({
+    super.key,
     this.showLeading = true,
     this.title = " ",
     this.onPressed,
@@ -32,16 +33,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: leading ?? IconButton(
-        onPressed: () {
-          context.pop();
-        },
-        icon:
-         const Icon(
-            Icons.arrow_back,
-            color: black,
+      leading: leading ??
+          IconButton(
+            onPressed: () {
+              context.pop();
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: black,
+            ),
           ),
-        ),
       elevation: 0,
       backgroundColor: colorAppBar,
       centerTitle: true,
@@ -51,7 +52,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           text: title.tr().toString(),
           // color: colorTxtAppBar,
           color: black,
-          fontSize: textFont18,
+          fontSize: textFont16,
         ),
       ),
       actions: actions,
