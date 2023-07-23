@@ -8,10 +8,11 @@ import '../../constant/fonts.dart';
 import '../../core/custom_text.dart';
 
 class CardUpperCase extends StatelessWidget {
-  const CardUpperCase({super.key, required this.name, required this.date,});
+  const CardUpperCase({super.key, required this.name, required this.date, this.iconBackground,});
 
   final String name;
   final String date;
+  final Color? iconBackground;
 
 
   @override
@@ -25,7 +26,7 @@ class CardUpperCase extends StatelessWidget {
                 borderRadius: BorderRadius.circular(
                   5,
                 ),
-                color: mainColor,
+                color: iconBackground ?? mainColor,
               ),
               child: Padding(
                 padding: const EdgeInsets.all(4.0),

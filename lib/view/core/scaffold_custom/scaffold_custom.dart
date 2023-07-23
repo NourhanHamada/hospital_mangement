@@ -37,7 +37,7 @@ class ScaffoldCustom extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       appBar: appBarCustom,
       // backgroundColor: background,
-      backgroundColor: grey200,
+      backgroundColor: background ?? grey200,
       // backgroundColor: ThemeCubit.get(context).isDark ? darkBackground : white,
       body: SafeArea(
         child: Padding(

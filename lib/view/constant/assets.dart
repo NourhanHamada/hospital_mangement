@@ -24,6 +24,12 @@ const String user2 = 'assets/icons/user2.svg';
 const String calendar = 'assets/icons/calendar.svg';
 const String done = 'assets/icons/done.svg';
 const String busy = 'assets/icons/busy.svg';
+const String specialist = 'assets/icons/specialist.svg';
+const String gender = 'assets/icons/gender.svg';
+const String location = 'assets/icons/location.svg';
+const String heart = 'assets/icons/heart.svg';
+const String email2 = 'assets/icons/email.svg';
+const String phone = 'assets/icons/phone.svg';
 
 // Cards
 const String calls = 'assets/icons/calls.png';
@@ -56,8 +62,7 @@ const String hidePassword = 'assets/icons/hide_password .svg';
 // BottomNavBar Icons.
 
 
-// liquid Items
-
+const String profileScreen = 'assets/images/profileScreen.svg';
 
 //illustration
 const String illustration1 = 'assets/images/illustration1.svg';

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hospital_mangement/view/constant/extensions.dart';
 import 'package:hospital_mangement/view/core/buttons/main_button.dart';
 import 'package:hospital_mangement/view/core/custom_appbar.dart';
+import 'package:hospital_mangement/view/screens/specialist_screens/case_details_screen.dart';
 import '../../constant/color_manager.dart';
 import '../../core/scaffold_custom/scaffold_custom.dart';
 import '../../widgets/home_screen/select_nurse_item.dart';
@@ -99,7 +100,9 @@ class SelectNurseScreen extends StatelessWidget {
           ),
           MainButton(
             title: 'Select Nurse',
-            onTap: () {},
+            onTap: () {
+              context.push(const CaseDetailsScreen());
+            },
           ),
         ],
       ),

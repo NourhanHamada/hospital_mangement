@@ -1,15 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hospital_mangement/view/screens/specialist_screens/case_details_screen.dart';
-import 'package:hospital_mangement/view/screens/specialist_screens/medical_measurement_screen.dart';
-import 'package:hospital_mangement/view/screens/specialist_screens/select_nurse_screen.dart';
+import 'package:hospital_mangement/view/screens/report_screens/report_details_screen.dart';
+import 'package:hospital_mangement/view/screens/report_screens/reports_screen.dart';
 import 'package:hospital_mangement/view_model/cubit/attendance/attendance_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/home/home_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/password_field_cubit/password_field_cubit.dart';
+import 'package:hospital_mangement/view_model/cubit/report/report_cubit.dart';
 import 'package:timezone/data/latest.dart' as time_zone;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hospital_mangement/view/constant/navigation_service.dart';
 import 'package:hospital_mangement/view/constant/observer.dart';
 import 'package:hospital_mangement/view/constant/theme.dart';
 import 'package:hospital_mangement/view_model/cubit/auth/login/login_cubit.dart';
@@ -52,6 +51,9 @@ void main() async {
         BlocProvider(
           create: (context) => HomeCubit(context),
         ),
+        BlocProvider(
+          create: (context) => ReportCubit(),
+        ),
       ],
       child: EasyLocalization(
         path: "resources/langs",
@@ -81,11 +83,10 @@ class MyApp extends StatelessWidget {
           // localizationsDelegates: context.localizationDelegates,
           // supportedLocales: context.supportedLocales,
           // locale: context.locale,
-          navigatorKey: NavigationService.instance.navigationKey,
+          // navigatorKey: NavigationService.instance.navigationKey,
           initialRoute: '/',
           routes: {
-            '/': (context) => SelectNurseScreen(),
-            // '/': (context) => const LoginScreen(),
+            '/': (context) => const ReportsScreen(),
           },
           debugShowCheckedModeBanner: false,
           theme: buildLightMode(context),

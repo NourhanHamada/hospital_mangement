@@ -16,7 +16,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   bool showLeading;
   List<Widget> actions;
   Color colorAppBar;
-  Color colorTxtAppBar;
+  Color? colorTxtAppBar;
   Widget? leading;
 
   CustomAppBar({
@@ -25,7 +25,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.title = " ",
     this.onPressed,
     this.colorAppBar = transparent,
-    this.colorTxtAppBar = whiteColor,
+    this.colorTxtAppBar,
     this.actions = const [],
     this.leading,
   });
@@ -38,9 +38,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             onPressed: () {
               context.pop();
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back,
-              color: black,
+              color: colorTxtAppBar ?? black,
             ),
           ),
       elevation: 0,
@@ -50,8 +50,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding: EdgeInsets.only(top: 0.h),
         child: CustomText(
           text: title.tr().toString(),
-          // color: colorTxtAppBar,
-          color: black,
+          color: colorTxtAppBar ?? black,
           fontSize: textFont16,
         ),
       ),

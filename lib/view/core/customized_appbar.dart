@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hospital_mangement/view/widgets/customized_appbar_left_section.dart';
 import '../constant/assets.dart';
-import '../constant/color_manager.dart';
-import '../constant/fonts.dart';
-import 'custom_text.dart';
 
 class CustomizedAppBar extends StatefulWidget {
   const CustomizedAppBar({super.key});
@@ -39,38 +37,7 @@ class _CustomAppBarState extends State<CustomizedAppBar>
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              Container(
-                width: 35.sp,
-                height: 35.sp,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    5,
-                  ),
-                  color: mainColor,
-                ),
-              ),
-              SizedBox(
-                width: 8.w,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomText(
-                    text: 'Ebrahim Elzainy',
-                    color: black,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  CustomText(
-                    text: 'Specialist, Doctor',
-                    color: mainColor,
-                    fontSize: textFont14,
-                  ),
-                ],
-              ),
-            ],
-          ),
+          const CustomizedAppbarLeftSection(),
           RotationTransition(
             turns: Tween(begin: 0.0, end: -.1)
                 .chain(

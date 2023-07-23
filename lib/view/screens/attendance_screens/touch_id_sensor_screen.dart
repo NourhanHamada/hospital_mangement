@@ -6,6 +6,7 @@ import 'package:hospital_mangement/view/constant/color_manager.dart';
 import 'package:hospital_mangement/view/constant/extensions.dart';
 import 'package:hospital_mangement/view/core/custom_text.dart';
 import 'package:hospital_mangement/view/screens/attendance_screens/attendance_screen.dart';
+import 'package:hospital_mangement/view/screens/home_screen.dart';
 
 class TouchIdSensorScreen extends StatefulWidget {
   const TouchIdSensorScreen({super.key});
@@ -129,7 +130,7 @@ class _TouchIdSensorScreenState extends State<TouchIdSensorScreen> {
                       ),
                     ),
                     onPressed: () {
-                      context.push(AttendanceScreen());
+                      context.push(const HomeScreen());
                     },
                     child: SvgPicture.asset(
                       arrow,

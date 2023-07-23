@@ -41,6 +41,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>We Need To Access photos to take report Image</string>
+    <key>NSCameraUsageDescription</key>
+    <string>We Need To Access Camera to take report Image</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Describe why your app requires access to the microphone (optional, if you want to record videos)
+    </string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>

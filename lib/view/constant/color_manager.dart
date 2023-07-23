@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 const Color white = Color(0xffFFFFFF);
 const Color black = Color(0xff2c2c2c);
 const Color mainColor = Color(0xff22c7b8);
@@ -18,6 +16,12 @@ const Color orange = Color(0xffEF7416);
 // accept and busy buttons.
 const Color greenButton = Color(0xff1ad672);
 const Color orangeButton = Color(0xffec9511);
+// report buttons
+const Color greenText = Color(0xff06E173);
+Color greenBackground = const Color(0xff06E173).withOpacity(.2);
+Color orangeText = const Color(0xffF17A12);
+Color orangeBackground = const Color(0xffF17A12).withOpacity(.2);
+
 
 // cards Colors.
 const Color blueCard = Color(0xff5f9edc);

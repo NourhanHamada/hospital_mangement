@@ -5,6 +5,11 @@ import 'color_manager.dart';
 
 buildLightMode(context) {
   return ThemeData(
+    colorScheme: const ColorScheme.light(
+        primary: mainColor,
+        onPrimary: white,
+        onSurface: black,
+    ),
     scaffoldBackgroundColor: white,
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
@@ -36,6 +41,7 @@ buildLightMode(context) {
 
 buildDarkMode(context) {
   return ThemeData(
+    primaryColor: mainColor,
     scaffoldBackgroundColor: black,
     appBarTheme: AppBarTheme(
       backgroundColor: darkBackground,

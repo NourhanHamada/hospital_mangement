@@ -86,7 +86,7 @@ class SmallButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: width ?? 100,
+        width: width ?? ScreenUtil().screenWidth / 3.5,
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(10),
