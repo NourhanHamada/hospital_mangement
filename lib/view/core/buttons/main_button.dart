@@ -12,13 +12,15 @@ class MainButton extends StatelessWidget {
     required this.title,
     required this.onTap,
     this.width,
-    this.color
+    this.color,
+    this.textColor
   });
 
   final String title;
   final void Function()? onTap;
   double? width;
   Color? color;
+  Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +29,8 @@ class MainButton extends StatelessWidget {
       onClick: onTap,
       width: width,
       title: CustomText(
-        color: whiteColor,
-        fontSize: textFont14.sp,
+        color: textColor ?? whiteColor,
+        fontSize: textFont14,
         fontWeight: FontWeight.w400,
         text: title,
       ),

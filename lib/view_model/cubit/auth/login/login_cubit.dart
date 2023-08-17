@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hospital_mangement/model/auth/signup/signup_model.dart';
+import 'package:hospital_mangement/view_model/database/network/dio_helper.dart';
+import 'package:hospital_mangement/view_model/database/network/end_points.dart';
 
 import '../../../../model/auth/login/login_model.dart';
 import '../../../../view/constant/data.dart';
@@ -47,8 +50,8 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void login(BuildContext context) {
-    print(email);
-    print(password);
+    debugPrint(email);
+    debugPrint(password);
     final form = formKey.currentState;
     if (form!.validate()) {
       form.save();
@@ -62,4 +65,25 @@ class LoginCubit extends Cubit<LoginState> {
       // }
     }
   }
+
+
+late LoginModel loginModel;
+  void loginData({required String email, required String password}) {
+    Map<String, dynamic> date = {
+      'email': email,
+      'password': password,
+    };
+    var result =  DioHelper.postData(
+      url: loginEndPoint,
+      data: date,
+    ).then((value) {
+      loginModel = LoginModel.fromJson(value.data);
+      debugPrint(value.data.toString());
+      emit(LoginSuccess(loginModel: loginModel));
+    }).catchError((onError) {
+      debugPrint(onError.toString());
+      emit(LoginError());
+    });
+  }
+
 }

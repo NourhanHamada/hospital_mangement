@@ -11,11 +11,12 @@ class HomeCubit extends Cubit<HomeState> {
 
   String specialist = 'doctor';
 
-  doctorScreen(){
-    specialist = 'doctor';
-      // context.push();
-    emit(DoctorState());
-  }
-
-
+  List<String> jobs = [
+    'Doctor',
+    'Receptionist',
+    'Nurse',
+    'Analyst Employee',
+    'Manager',
+    'HR',
+  ];
 }

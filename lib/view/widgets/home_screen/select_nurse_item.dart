@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hospital_mangement/view/constant/assets.dart';
 
 import '../../constant/color_manager.dart';
 import '../../constant/fonts.dart';
@@ -13,12 +15,14 @@ class SelectNurseItem extends StatelessWidget {
     required this.selected,
     required this.name,
     this.onTap,
+    required this.specialist,
   });
 
   final Color activeOrNot;
   late Color selected;
   final String name;
   void Function()? onTap;
+  final String specialist;
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +74,9 @@ class SelectNurseItem extends StatelessWidget {
                       fontSize: 12,
                     ),
                     CustomText(
-                      text: 'Specialist, Nurse',
-                      color: grey600,
-                      fontSize: textFont12,
+                      text: 'Specialist, $specialist',
+                      color: grey700,
+                      fontSize: textFont10,
                     ),
                   ],
                 ),

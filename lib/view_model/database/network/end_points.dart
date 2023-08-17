@@ -1,13 +1,37 @@
 //End Points that's Used in API
 
 // Network Connection Details
-const String baseUrl = '';
+const String baseUrl = 'http://api.instant-ss.com/api/v1';
 const String baseImage = '';
 const String baseSocket = '';
 
 
 //auth endpoints
-const String loginEndPoint = 'signin';
+const String loginEndPoint = 'login';
+const String registerEndPoint = 'register';
+const String showProfileEndPoint = 'register';
+
+// calls endpoints
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const String forgetPasswordEndPoint = 'phoneForgetPassword';
 const String forgetPasswordConfirmCodeEndPoint = 'phoneConfirmationCode';
 const String createNewPasswordEndPoint = 'phonePasswordChange';

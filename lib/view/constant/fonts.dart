@@ -1,8 +1,4 @@
 //Text Fonts
-import 'dart:ui';
-
-import 'color_manager.dart';
-
 const double textFont53 = 51;
 const double textFont50 = 50;
 const double textFont42 = 42;
@@ -20,6 +16,7 @@ const double textFont14 = 14;
 const double textFont13 = 13;
 const double textFont12 = 12;
 const double textFont11 = 11;
+const double textFont10 = 10;
 
 //Btn Fonts
 const double btnFont22 = 22;

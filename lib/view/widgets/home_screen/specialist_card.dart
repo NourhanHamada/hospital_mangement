@@ -4,6 +4,7 @@ import 'package:hospital_mangement/view/constant/color_manager.dart';
 import 'package:hospital_mangement/view/constant/fonts.dart';
 import 'package:hospital_mangement/view/core/custom_text.dart';
 
+//ignore: must_be_immutable
 class SpecialistCard extends StatelessWidget {
   SpecialistCard({
     super.key,

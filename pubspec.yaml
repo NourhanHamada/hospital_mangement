@@ -85,6 +85,13 @@ dependencies:
   formz: ^0.6.0
   dotted_border: ^2.0.0+3
   image_picker: ^1.0.1
+  table_calendar: ^3.0.9
+  in_date_utils: ^1.2.0+2
+  numberpicker: ^2.1.2
+  dropdown_button2: ^2.3.8
+  easy_search_bar: ^2.5.0
+  paginated_search_bar: ^1.1.2
+  sqflite: ^2.3.0
 
 dev_dependencies:
   flutter_test:

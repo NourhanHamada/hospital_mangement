@@ -32,7 +32,7 @@ class MedicalMeasurementScreen extends StatelessWidget {
             children: [
               GestureDetector(
                 child: Container(
-                  width: 150,
+                  width: context.screenWidth / 2.4,
                   decoration: BoxDecoration(
                     color: mainColor,
                     borderRadius: BorderRadius.circular(
@@ -47,7 +47,7 @@ class MedicalMeasurementScreen extends StatelessWidget {
                           text: 'Blood Pressure',
                         ),
                         SizedBox(
-                          width: 8.w,
+                          width: 3.w,
                         ),
                         const Icon(
                           Icons.close,
@@ -60,7 +60,7 @@ class MedicalMeasurementScreen extends StatelessWidget {
               ),
               GestureDetector(
                 child: Container(
-                  width: 150,
+                  width: context.screenWidth / 2.4,
                   decoration: BoxDecoration(
                     color: mainColor,
                     borderRadius: BorderRadius.circular(
@@ -75,7 +75,7 @@ class MedicalMeasurementScreen extends StatelessWidget {
                           text: 'Blood Pressure',
                         ),
                         SizedBox(
-                          width: 8.w,
+                          width: 3.w,
                         ),
                         const Icon(
                           Icons.close,
@@ -88,7 +88,7 @@ class MedicalMeasurementScreen extends StatelessWidget {
               ),
               GestureDetector(
                 child: Container(
-                  width: 185,
+                  width: context.screenWidth / 1.9,
                   decoration: BoxDecoration(
                     color: grey200,
                     borderRadius: BorderRadius.circular(

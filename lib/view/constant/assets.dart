@@ -69,3 +69,4 @@ const String illustration1 = 'assets/images/illustration1.svg';
 const String illustration2 = 'assets/images/illustration2.svg';
 const String illustration3 = 'assets/images/illustration3.svg';
 
+// Images

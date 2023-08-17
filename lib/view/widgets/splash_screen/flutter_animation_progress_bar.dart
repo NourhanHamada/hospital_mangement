@@ -25,7 +25,7 @@ class FlutterAnimationProgressBarState
       setState(() {
         if (progressValue == 100) {
           timer.cancel();
-          context.push(const StartupScreen());
+          context.push(StartupScreen());
         } else {
           progressValue++;
         }

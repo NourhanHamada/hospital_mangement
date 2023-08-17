@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,11 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hospital_mangement/view/constant/color_manager.dart';
 import 'package:hospital_mangement/view/constant/extensions.dart';
 import 'package:hospital_mangement/view/core/buttons/main_button.dart';
+import 'package:hospital_mangement/view/core/component.dart';
 import 'package:hospital_mangement/view/core/custom_appbar.dart';
 import 'package:hospital_mangement/view/core/custom_text.dart';
 import 'package:hospital_mangement/view/core/scaffold_custom/scaffold_custom.dart';
+import 'package:hospital_mangement/view/screens/home_screen.dart';
 import 'package:hospital_mangement/view_model/cubit/report/report_cubit.dart';
-import 'package:image_picker/image_picker.dart';
 
 class CreateReportScreen extends StatefulWidget {
   const CreateReportScreen({super.key});
@@ -20,7 +20,7 @@ class CreateReportScreen extends StatefulWidget {
 }
 
 class _CreateReportScreenState extends State<CreateReportScreen> {
-  final GlobalKey formKey = GlobalKey();
+  final formKey = GlobalKey<FormState>();
   final TextEditingController reportNameController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
 
@@ -48,7 +48,14 @@ class _CreateReportScreenState extends State<CreateReportScreen> {
                           borderSide: const BorderSide(
                             color: grey400,
                           ),
-                        )),
+                        ),
+                    ),
+                    validator: (value){
+                      if(value!.trim().isEmpty){
+                        return 'Report name must be not empty';
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(
                     height: 16.h,
@@ -64,7 +71,14 @@ class _CreateReportScreenState extends State<CreateReportScreen> {
                           borderSide: const BorderSide(
                             color: grey400,
                           ),
-                        )),
+                        ),
+                    ),
+                    validator: (value){
+                      if(value!.trim().isEmpty){
+                        return 'Report Description must be not empty';
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(
                     height: 16.h,
@@ -184,23 +198,29 @@ class _CreateReportScreenState extends State<CreateReportScreen> {
                   ),
 
                   // test Image View!!!
-                  // const SizedBox(
-                  //   height: 20,
-                  // ),
-                  // selectedImage != null
-                  //     ? Expanded(
-                  //     child: Image.file(selectedImage!))
-                  //     : CustomText(text: 'Please Select an Image'),
-                  // const SizedBox(
-                  //   height: 20,
-                  // ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  reportCubit.selectedImage != null
+                      ? Expanded(
+                      child: Image.file(reportCubit.selectedImage!),)
+                      : const SizedBox(),
+                  const SizedBox(
+                    height: 20,
+                  ),
                 ],
               ),
             ),
           ),
           MainButton(
             title: 'Create Report',
-            onTap: () {},
+            onTap: () {
+              if(formKey.currentState!.validate()){
+                showToast(message: 'Report Created', color: toastColor).then((value) {
+                  context.push(const HomeScreen());
+                });
+              }
+            },
           ),
         ],
       ),

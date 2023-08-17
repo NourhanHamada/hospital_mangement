@@ -127,6 +127,7 @@
 //   }
 // }
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hospital_mangement/view/constant/fonts.dart';
 
 import '../../../view_model/cubit/theme/theme_cubit.dart';
@@ -153,9 +154,12 @@ class TextFormFieldsCustom extends StatefulWidget {
   final IconData? suffixIconToggle;
   final Color? suffixIconColorToggle;
   final Function()? suffixOnPressed;
+  final Function()? onTap;
   final FocusNode? focus;
   final Function(String?)? onChanged;
   final String? labelText;
+  final List<TextInputFormatter>? inputFormatter;
+  final int? maxLines;
 
   TextFormFieldsCustom({
     Key? key,
@@ -181,6 +185,9 @@ class TextFormFieldsCustom extends StatefulWidget {
     this.onChanged,
     required bool enableInteractive,
     this.labelText,
+    this.onTap,
+    this.inputFormatter,
+    this.maxLines
   }) : super(key: key);
 
   @override
@@ -193,40 +200,49 @@ class _TextFormFieldsCustomState extends State<TextFormFieldsCustom> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
+      maxLines: widget.maxLines ?? 1,
       focusNode: widget.focus,
+      inputFormatters: widget.inputFormatter,
       textInputAction: widget.textInputAction ?? TextInputAction.done,
       onEditingComplete: widget.onEditingComplete,
       onChanged: (value) {
-        //onChanged!(value);
-        widget.onChanged != null ? widget.onChanged!(value) : null;
+        // onChanged!(value);
+        // widget.onChanged != null ? widget.onChanged!(value) : null;
       },
+      onTap: widget.onTap,
       style: const TextStyle(color: grey800),
       cursorColor: mainColor,
       cursorHeight: 20,
       cursorWidth: 1.5,
       decoration: InputDecoration(
-        label: Row(
-          children: [
-            Container(
-              width: 1.2,
-              height: 22,
-              color: mainColor,
-            ),
-            const SizedBox(
-              width: 8,
-            ),
-            CustomText(
-              text: '${widget.labelText}',
-              color: grey700,
-              fontWeight: FontWeight.w400,
-              fontSize: textFont12,
-            ),
-          ],
+        label:  CustomText(
+          text: '${widget.labelText}',
+          color: grey700,
+          fontWeight: FontWeight.w400,
+          fontSize: textFont12,
         ),
+        // label: Row(
+        //   children: [
+        //     Container(
+        //       width: 1.2,
+        //       height: 22,
+        //       color: mainColor,
+        //     ),
+        //     const SizedBox(
+        //       width: 8,
+        //     ),
+        //     CustomText(
+        //       text: '${widget.labelText}',
+        //       color: grey700,
+        //       fontWeight: FontWeight.w400,
+        //       fontSize: textFont12,
+        //     ),
+        //   ],
+        // ),
         fillColor: ThemeCubit.get(context).isDark ? toastColor : white,
         filled: true,
         isDense: true,
-        hintText: widget.hintText,
+        hintText: widget.labelText,
         helperText: widget.helperText,
         prefixIcon: widget.prefixIcon,
         suffixIcon: widget.suffixIcon,
@@ -239,7 +255,7 @@ class _TextFormFieldsCustomState extends State<TextFormFieldsCustom> {
         ),
         border: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: grey600,
+            color: grey400,
             width: 1,
           ),
           borderRadius: BorderRadius.circular(
@@ -255,11 +271,11 @@ class _TextFormFieldsCustomState extends State<TextFormFieldsCustom> {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
-            color: grey600,
+            color: grey400,
           ),
         ),
         contentPadding: const EdgeInsets.symmetric(
-          vertical: 16,
+          vertical: 10,
           horizontal: 16,
         ),
         errorBorder: OutlineInputBorder(

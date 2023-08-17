@@ -68,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
                         icon: heart,
                       ),
                       const ProfileScreenItem(
-                        text: 'hazim.h@gmail.com',
+                        text: 'ebrahim.k@gmail.com',
                         icon: heart,
                       ),
                       const ProfileScreenItem(
@@ -78,29 +78,34 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Transform.translate(
-                  offset: Offset(ScreenUtil().screenWidth / 1.8 - 110, -50),
-                  // alignment: Alignment.topCenter,
-                  child: Container(
-                    width: 125,
-                    height: 125,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: grey200.withOpacity(.3),
-                      border: Border.all(color: mainColor, width: 3),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(13),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Transform.translate(
+                      offset: Offset(ScreenUtil().screenWidth / 2 - 80, -50),
+                      // alignment: Alignment.topCenter,
                       child: Container(
-                        decoration: const BoxDecoration(
+                        width: 125,
+                        height: 125,
+                        decoration: BoxDecoration(
                           shape: BoxShape.circle,
+                          color: grey200.withOpacity(.3),
+                          border: Border.all(color: mainColor, width: 3),
                         ),
-                        child: SvgPicture.asset(
-                          profileScreen,
+                        child: Padding(
+                          padding: const EdgeInsets.all(13),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: SvgPicture.asset(
+                              profileScreen,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             ),

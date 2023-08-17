@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hospital_mangement/view/constant/extensions.dart';
+import '../../view_model/cubit/home/home_cubit.dart';
 import '../constant/color_manager.dart';
 import '../constant/fonts.dart';
 import '../core/custom_text.dart';
@@ -11,6 +13,7 @@ class CustomizedAppbarLeftSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HomeCubit homeCubit = BlocProvider.of<HomeCubit>(context, listen: true);
     return GestureDetector(
       onTap: (){
         context.push(const ProfileScreen());
@@ -40,7 +43,7 @@ class CustomizedAppbarLeftSection extends StatelessWidget {
                 fontSize: 14,
               ),
               CustomText(
-                text: 'Specialist, Doctor',
+                text: 'Specialist, ${homeCubit.specialist}',
                 color: mainColor,
                 fontSize: textFont12,
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hospital_mangement/view/constant/fonts.dart';
 import '../../constant/assets.dart';
 import '../../constant/color_manager.dart';
@@ -15,23 +16,23 @@ class SplashScreenBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children:  [
-        Image(image: AssetImage(logo)),
+        const Image(image: AssetImage(logo),),
         SizedBox(
-          height: 9,
+          height: 9.h,
         ),
         CustomText(
           text: 'Hospital System',
           color: mainColor,
           fontSize: textFont20,
         ),
-        SizedBox(
+        const SizedBox(
           height: 191,
         ),
-        FlutterAnimationProgressBar(),
-        SizedBox(
+        const FlutterAnimationProgressBar(),
+        const SizedBox(
           height: 8,
         ),
-        AnimatedText(),
+        const AnimatedText(),
       ],
     );
   }

@@ -16,7 +16,7 @@ class _CustomAppBarState extends State<CustomizedAppBar>
   late AnimationController animationController;
 
   void _runAnimation() async {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 5; i++) {
       await animationController.forward();
       await animationController.reverse();
     }

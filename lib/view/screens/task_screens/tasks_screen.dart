@@ -1,37 +1,48 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hospital_mangement/view/constant/color_manager.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hospital_mangement/view/constant/extensions.dart';
 import 'package:hospital_mangement/view/core/custom_appbar.dart';
 import 'package:hospital_mangement/view/core/scaffold_custom/scaffold_custom.dart';
-import 'package:hospital_mangement/view/screens/report_screens/report_details_screen.dart';
-import 'package:in_date_utils/in_date_utils.dart';
-import 'package:table_calendar/table_calendar.dart';
+import 'package:hospital_mangement/view/screens/task_screens/task_details_screen.dart';
 import '../../constant/assets.dart';
+import '../../constant/color_manager.dart';
 import '../../widgets/tasks_and_report_card.dart';
-import 'create_report_screen.dart';
+import '../report_screens/create_report_screen.dart';
 
-// ignore: must_be_immutable
-class ReportsScreen extends StatefulWidget {
-  const ReportsScreen({super.key});
+class TasksScreen extends StatefulWidget {
+  const TasksScreen({super.key});
 
   @override
-  State<ReportsScreen> createState() => _ReportsScreenState();
+  State<TasksScreen> createState() => _TasksScreenState();
 }
 
-class _ReportsScreenState extends State<ReportsScreen> {
+class _TasksScreenState extends State<TasksScreen> {
   TextEditingController dateController = TextEditingController();
-  var _selectedDay = DateTime.now();
-  var _focusDay;
 
   @override
   Widget build(BuildContext context) {
+    DateTime selectedDate;
+    Future<void> selectDate() async {
+      DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2020),
+        lastDate: DateTime(2024),
+      );
+      if (picked != null) {
+        setState(() {
+          selectedDate = picked;
+          dateController.text =
+              DateFormat('dd . MM . yyyy').format(selectedDate);
+        });
+      }
+    }
 
     return ScaffoldCustom(
       appBarCustom: CustomAppBar(
-        title: 'Reports',
+        title: 'Tasks',
       ),
       body: Column(
         children: [
@@ -74,55 +85,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                   ),
                   readOnly: true,
                   onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      builder: (BuildContext context) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: TableCalendar(
-                            calendarStyle: CalendarStyle(
-                              rangeHighlightColor: mainColor,
-                              todayDecoration: const BoxDecoration(
-                                color: Colors.transparent,
-                                shape: BoxShape.circle,
-                              ),
-                              todayTextStyle: const TextStyle(
-                                color: mainColor,
-                              ),
-                              selectedDecoration: BoxDecoration(
-                                  color: mainColor.withOpacity(.1),
-                                  shape: BoxShape.circle),
-                              selectedTextStyle: const TextStyle(
-                                color: mainColor,
-                              ),
-                            ),
-                            onDaySelected: (selectedDay, focusDay) {
-                              setState(() {
-                                _selectedDay = selectedDay;
-                                _focusDay = focusDay;
-                                dateController.text =
-                                    DateFormat('dd . MM . yyyy')
-                                        .format(_selectedDay);
-                                context.pop();
-                              });
-                            },
-                            selectedDayPredicate: (day) {
-                              return isSameDay(_selectedDay, day);
-                            },
-                            daysOfWeekHeight: 30,
-                            focusedDay: DateTime.now(),
-                            firstDay: DateTime.now(),
-                            // lastDay: DateTime.utc(2023, 10, 10),
-                            lastDay: DTU.lastDayOfMonth(
-                              DateTime.now(),
-                            ),
-                          ),
-                        );
-                      },
-                    );
+                    selectDate();
                   },
                   controller: dateController,
                 ),
@@ -154,10 +117,10 @@ class _ReportsScreenState extends State<ReportsScreen> {
           TasksAndReportsCard(
             onTap: () {
               context.push(
-                const ReportDetailsScreen(),
+                const TaskDetailsScreen(),
               );
             },
-            taskName: 'Report Name',
+            taskName: 'Task Name',
             date: '24 . 04 . 2023',
             process: 'Finished',
           ),
@@ -167,10 +130,10 @@ class _ReportsScreenState extends State<ReportsScreen> {
           TasksAndReportsCard(
             onTap: () {
               context.push(
-                const ReportDetailsScreen(),
+                const TaskDetailsScreen(),
               );
             },
-            taskName: 'Report Name',
+            taskName: 'Task Name',
             date: '24 . 04 . 2023',
             process: 'Process',
           ),

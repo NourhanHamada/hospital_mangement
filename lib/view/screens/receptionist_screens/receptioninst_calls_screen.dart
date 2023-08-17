@@ -1,37 +1,36 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hospital_mangement/view/constant/color_manager.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hospital_mangement/view/constant/extensions.dart';
 import 'package:hospital_mangement/view/core/custom_appbar.dart';
+import 'package:hospital_mangement/view/core/custom_text.dart';
 import 'package:hospital_mangement/view/core/scaffold_custom/scaffold_custom.dart';
-import 'package:hospital_mangement/view/screens/report_screens/report_details_screen.dart';
+import 'package:hospital_mangement/view/screens/receptionist_screens/receptionist_case_details_screen.dart';
+import 'package:hospital_mangement/view/screens/receptionist_screens/receptionist_create_call_screen.dart';
 import 'package:in_date_utils/in_date_utils.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../../constant/assets.dart';
-import '../../widgets/tasks_and_report_card.dart';
-import 'create_report_screen.dart';
+import '../../constant/color_manager.dart';
 
-// ignore: must_be_immutable
-class ReportsScreen extends StatefulWidget {
-  const ReportsScreen({super.key});
+class ReceptionistCallsScreen extends StatefulWidget {
+  const ReceptionistCallsScreen({super.key});
 
   @override
-  State<ReportsScreen> createState() => _ReportsScreenState();
+  State<ReceptionistCallsScreen> createState() =>
+      _ReceptionistCallsScreenState();
 }
 
-class _ReportsScreenState extends State<ReportsScreen> {
+class _ReceptionistCallsScreenState extends State<ReceptionistCallsScreen> {
   TextEditingController dateController = TextEditingController();
   var _selectedDay = DateTime.now();
   var _focusDay;
 
   @override
   Widget build(BuildContext context) {
-
     return ScaffoldCustom(
       appBarCustom: CustomAppBar(
-        title: 'Reports',
+        title: 'Calls',
       ),
       body: Column(
         children: [
@@ -49,6 +48,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                     ),
                     // hintText: 'Date',
                     hintText:
+                        // _selectedDay.toString(),
                         DateFormat('dd . MM . yyyy').format(DateTime.now()),
                     hintStyle: const TextStyle(
                       color: black,
@@ -137,7 +137,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                 ),
                 child: IconButton(
                   onPressed: () {
-                    context.push(const CreateReportScreen());
+                    context.push(const ReceptionistCreateCallScreen());
                   },
                   icon: const Icon(
                     Icons.add,
@@ -148,31 +148,100 @@ class _ReportsScreenState extends State<ReportsScreen> {
               ),
             ],
           ),
-          SizedBox(
-            height: 16.h,
+          const SizedBox(
+            height: 32,
           ),
-          TasksAndReportsCard(
-            onTap: () {
-              context.push(
-                const ReportDetailsScreen(),
-              );
+          GestureDetector(
+            onTap: (){
+              context.push(const ReceptionistCaseDetailsScreen());
             },
-            taskName: 'Report Name',
-            date: '24 . 04 . 2023',
-            process: 'Finished',
-          ),
-          SizedBox(
-            height: 8.h,
-          ),
-          TasksAndReportsCard(
-            onTap: () {
-              context.push(
-                const ReportDetailsScreen(),
-              );
-            },
-            taskName: 'Report Name',
-            date: '24 . 04 . 2023',
-            process: 'Process',
+            child: Card(
+              elevation: 5,
+              color: white,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              width: 20,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                color: mainColor,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: SvgPicture.asset(
+                                  user2,
+                                  fit: BoxFit.scaleDown,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            CustomText(
+                              text: 'text',
+                              color: black,
+                              fontSize: 14,
+                            ),
+                          ],
+                        ),
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: greenButton,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.all(2.0),
+                            child: Icon(
+                              Icons.av_timer,
+                              size: 16,
+                              color: white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: mainColor,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: SvgPicture.asset(
+                              calendar,
+                              fit: BoxFit.scaleDown,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        CustomText(
+                          text: dateController.text,
+                          color: black,
+                          fontSize: 14,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
         ],
       ),

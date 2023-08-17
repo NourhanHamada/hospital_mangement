@@ -9,7 +9,6 @@ import 'package:hospital_mangement/view/screens/home_screen.dart';
 import '../../../view_model/cubit/password_field_cubit/password_field_cubit.dart';
 import '../../constant/color_manager.dart';
 import '../../core/custom_text.dart';
-import '../../screens/attendance_screens/touch_id_sensor_screen.dart';
 
 
 class LoginLowerSection extends StatefulWidget {
@@ -21,13 +20,14 @@ class LoginLowerSection extends StatefulWidget {
 
 class _LoginLowerSectionState extends State<LoginLowerSection> {
   final key = GlobalKey<FormState>();
-  final TextEditingController mobileController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     var passwordCubit =
         BlocProvider.of<PasswordFieldCubit>(context, listen: true);
+    // LoginCubit loginCubit = BlocProvider.of(context, listen: true);
     return Form(
       child: Column(
         children: [
@@ -36,7 +36,7 @@ class _LoginLowerSectionState extends State<LoginLowerSection> {
             child: Column(
               children: [
                 TextFormFieldsCustom(
-                  controller: mobileController,
+                  controller: emailController,
                   isPassword: false,
                   keyboardType: TextInputType.phone,
                   validator: (value){
@@ -44,10 +44,10 @@ class _LoginLowerSectionState extends State<LoginLowerSection> {
                       return 'Please enter phone number';
                     } else if(!RegExp(validationPhone).hasMatch(value.trim())){
                       return 'Phone Number must be valid';
-                    }
+                    } return null;
                   },
                   prefixIcon: const Icon(
-                    Icons.phone_outlined,
+                    Icons.email_outlined,
                     color: mainColor,
                   ),
                   enableInteractive: true,
@@ -135,10 +135,13 @@ class _LoginLowerSectionState extends State<LoginLowerSection> {
           MainButton(
             title: 'Login',
             onTap: () {
+              // loginCubit.loginData(
+              //     email: emailController.text,
+              //     password: passwordController.text
+              // );
               if (key.currentState!.validate()) {
                 key.currentState!.save();
                 context.push(const HomeScreen());
-                // context.push();
                 debugPrint('Validate Success');
               }else {
                 debugPrint('fail');
