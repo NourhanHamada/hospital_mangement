@@ -160,6 +160,7 @@ class TextFormFieldsCustom extends StatefulWidget {
   final String? labelText;
   final List<TextInputFormatter>? inputFormatter;
   final int? maxLines;
+  final Color? labelDividerColor;
 
   TextFormFieldsCustom({
     Key? key,
@@ -187,7 +188,8 @@ class TextFormFieldsCustom extends StatefulWidget {
     this.labelText,
     this.onTap,
     this.inputFormatter,
-    this.maxLines
+    this.maxLines,
+    this.labelDividerColor
   }) : super(key: key);
 
   @override
@@ -215,30 +217,30 @@ class _TextFormFieldsCustomState extends State<TextFormFieldsCustom> {
       cursorHeight: 20,
       cursorWidth: 1.5,
       decoration: InputDecoration(
-        label:  CustomText(
-          text: '${widget.labelText}',
-          color: grey700,
-          fontWeight: FontWeight.w400,
-          fontSize: textFont12,
-        ),
-        // label: Row(
-        //   children: [
-        //     Container(
-        //       width: 1.2,
-        //       height: 22,
-        //       color: mainColor,
-        //     ),
-        //     const SizedBox(
-        //       width: 8,
-        //     ),
-        //     CustomText(
-        //       text: '${widget.labelText}',
-        //       color: grey700,
-        //       fontWeight: FontWeight.w400,
-        //       fontSize: textFont12,
-        //     ),
-        //   ],
+        // label:  CustomText(
+        //   text: '${widget.labelText}',
+        //   color: grey700,
+        //   fontWeight: FontWeight.w400,
+        //   fontSize: textFont12,
         // ),
+        label: Row(
+          children: [
+            Container(
+              width: 1.2,
+              height: 20,
+              color: widget.labelDividerColor ?? Colors.transparent,
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            CustomText(
+              text: '${widget.labelText}',
+              color: grey700,
+              fontWeight: FontWeight.w400,
+              fontSize: textFont12,
+            ),
+          ],
+        ),
         fillColor: ThemeCubit.get(context).isDark ? toastColor : white,
         filled: true,
         isDense: true,

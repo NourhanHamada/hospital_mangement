@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hospital_mangement/view/constant/assets.dart';
 import 'package:hospital_mangement/view/constant/color_manager.dart';
 import 'package:hospital_mangement/view/constant/extensions.dart';
 import 'package:hospital_mangement/view/core/custom_text.dart';
+import 'package:hospital_mangement/view/screens/attendance_screens/attendance_screen.dart';
 import 'package:hospital_mangement/view/screens/home_screen.dart';
+
+import '../../../view_model/cubit/attendance/attendance_cubit.dart';
 
 class TouchIdSensorScreen extends StatefulWidget {
   const TouchIdSensorScreen({super.key});
@@ -23,7 +27,7 @@ class _TouchIdSensorScreenState extends State<TouchIdSensorScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // AttendanceCubit attendanceCubit = BlocProvider.of(context, listen: true);
+    AttendanceCubit attendanceCubit = BlocProvider.of(context, listen: true);
     return Scaffold(
         backgroundColor: mainColor,
         body: Stack(
@@ -36,6 +40,8 @@ class _TouchIdSensorScreenState extends State<TouchIdSensorScreen> {
                 children: [
                   GestureDetector(
                     onTap: () {
+                      attendanceCubit.attendanceAndLeaving();
+                      print(attendanceCubit.attendOrLeave);
                       setState(() {
                         isAttend = !isAttend;
                         isVisible = true;
@@ -129,7 +135,8 @@ class _TouchIdSensorScreenState extends State<TouchIdSensorScreen> {
                       ),
                     ),
                     onPressed: () {
-                      context.push(const HomeScreen());
+                      context.push(const AttendanceScreen());
+                      // context.push(const HomeScreen());
                     },
                     child: SvgPicture.asset(
                       arrow,

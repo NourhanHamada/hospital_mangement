@@ -1,17 +1,21 @@
 //End Points that's Used in API
 
 // Network Connection Details
-const String baseUrl = 'http://api.instant-ss.com/api/v1';
+const String baseUrl = 'http://api.instant-ss.com/api/v1/';
+
+// Auth End Points
+const String register = 'register';
+const String login = 'login';
+
+// Attendance End Point
+const String attendance = 'attendance';
+
+// calls endpoints
+
+
 const String baseImage = '';
 const String baseSocket = '';
 
-
-//auth endpoints
-const String loginEndPoint = 'login';
-const String registerEndPoint = 'register';
-const String showProfileEndPoint = 'register';
-
-// calls endpoints
 
 
 

@@ -39,7 +39,7 @@ class SpecialistCard extends StatelessWidget {
           color: cardColor,
         ),
         height: height,
-        width: width ?? ScreenUtil().screenWidth / 2 - 32,
+        width: width ?? ScreenUtil().screenWidth / 2 - 36,
         child: isRow
             ? Padding(
                 padding: EdgeInsets.symmetric(horizontal: 48.sp),

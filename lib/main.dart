@@ -1,11 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hospital_mangement/view/screens/receptionist_screens/receptionist_case_details_screen.dart';
+import 'package:hospital_mangement/view/screens/hr_screens/employee_list_screen.dart';
 import 'package:hospital_mangement/view/screens/startup_screens/splash_screen.dart';
+import 'package:hospital_mangement/view_model/cubit/all_users/all_users_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/attendance/attendance_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/create_call/create_call_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/home/home_cubit.dart';
+import 'package:hospital_mangement/view_model/cubit/new_user/new_user_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/password_field_cubit/password_field_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/receptionist_case_details/receptionist_case_details_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/report/report_cubit.dart';
@@ -62,6 +64,12 @@ void main() async {
         BlocProvider(
           create: (context) => ReceptionistCaseDetailsCubit(),
         ),
+        BlocProvider(
+          create: (context) => NewUserCubit(),
+        ),
+        BlocProvider(
+          create: (context) => AllUsersCubit(),
+        ),
       ],
       child: EasyLocalization(
         path: "resources/langs",
@@ -94,7 +102,7 @@ class MyApp extends StatelessWidget {
           // navigatorKey: NavigationService.instance.navigationKey,
           initialRoute: '/',
           routes: {
-            '/': (context) => const ReceptionistCaseDetailsScreen(),
+            '/': (context) => const SplashScreen(),
           },
           debugShowCheckedModeBanner: false,
           theme: buildLightMode(context),

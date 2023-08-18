@@ -72,6 +72,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
             icon: attendanceCubit.isAttend ? Icons.done : Icons.close,
             color: attendanceCubit.isAttend ? greenButton : orange,
             onPress: () {
+              attendanceCubit.attendOrLeave = 'attendance';
               context.push(const TouchIdSensorScreen());
               attendanceCubit.attendanceDone();
             },
@@ -85,6 +86,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
             icon: attendanceCubit.isLeaving ? Icons.done : Icons.close,
             color: attendanceCubit.isLeaving ? greenButton : orange,
             onPress: () {
+              attendanceCubit.attendOrLeave = 'leaving';
               context.push(const TouchIdSensorScreen());
               attendanceCubit.leavingDone();
             },

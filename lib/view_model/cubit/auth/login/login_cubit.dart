@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hospital_mangement/model/auth/signup/signup_model.dart';
 import 'package:hospital_mangement/view_model/database/network/dio_helper.dart';
 import 'package:hospital_mangement/view_model/database/network/end_points.dart';
-
-import '../../../../model/auth/login/login_model.dart';
-import '../../../../view/constant/data.dart';
 
 part 'login_state.dart';
 
@@ -32,58 +28,71 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginLoading());
   }
 
-
-
   void togglePasswordVisibility() {
     isPasswordVisible = !isPasswordVisible;
     emit(PasswordShow());
   }
 
-  void formValidation() {
-    if (!RegExp(validationEmail).hasMatch(email) ||
-        !RegExp(validationPassword).hasMatch(password)) {
-      emit(TextFieldInvalid(
-          error: 'Incorrect Email or Password. Please try again'));
-    } else {
-      emit(TextFieldValid());
-    }
-  }
+  // void formValidation() {
+  //   if (!RegExp(validationEmail).hasMatch(email) ||
+  //       !RegExp(validationPassword).hasMatch(password)) {
+  //     emit(TextFieldInvalid(
+  //         error: 'Incorrect Email or Password. Please try again'));
+  //   } else {
+  //     emit(TextFieldValid());
+  //   }
+  // }
 
-  void login(BuildContext context) {
-    debugPrint(email);
-    debugPrint(password);
-    final form = formKey.currentState;
-    if (form!.validate()) {
-      form.save();
-      // auth.login(email, password).then((response) {});
-    } else {
-      //   Flushbar(
-      //       title: "Invalid Form",
-      //       message: 'please complete the form properly',
-      //       duration: const Duration(seconds: 10))
-      //       .show(context);
-      // }
-    }
-  }
+  // void login(BuildContext context) {
+  //   debugPrint(email);
+  //   debugPrint(password);
+  //   final form = formKey.currentState;
+  //   if (form!.validate()) {
+  //     form.save();
+  //     // auth.login(email, password).then((response) {});
+  //   } else {
+  //     //   Flushbar(
+  //     //       title: "Invalid Form",
+  //     //       message: 'please complete the form properly',
+  //     //       duration: const Duration(seconds: 10))
+  //     //       .show(context);
+  //     // }
+  //   }
+  // }
 
-
-late LoginModel loginModel;
-  void loginData({required String email, required String password}) {
-    Map<String, dynamic> date = {
+// late LoginModel loginModel;
+  late String errorMessage;
+  late String status;
+  void loginData({
+    required String email,
+    required String password,
+  }) async {
+    emit(LoginLoading());
+    var date = {
       'email': email,
       'password': password,
     };
-    var result =  DioHelper.postData(
-      url: loginEndPoint,
+    await DioHelper.postData(
+      url: login,
       data: date,
     ).then((value) {
-      loginModel = LoginModel.fromJson(value.data);
-      debugPrint(value.data.toString());
-      emit(LoginSuccess(loginModel: loginModel));
+      // loginModel = LoginModel.fromJson(value.data);
+      debugPrint(value.toString());
+
+      if(value.data['status'].toString() == '1') {
+        status = '1';
+        debugPrint(value.data['status'].toString());
+      } else {
+        status = '0';
+        errorMessage = value.data['message'].toString();
+        debugPrint(value.data['status'].toString());
+        // debugPrint(value.data['message'].toString());
+      }
+      emit(LoginSuccess());
     }).catchError((onError) {
+      debugPrint('ERROR!!!!!!!!!!!!!!!');
       debugPrint(onError.toString());
       emit(LoginError());
     });
   }
-
 }
