@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hospital_mangement/view/constant/data.dart';
+import 'package:hospital_mangement/view_model/cubit/all_users/all_users_cubit.dart';
+import 'package:hospital_mangement/view_model/database/local/cache_helper.dart';
 import 'package:hospital_mangement/view_model/database/network/dio_helper.dart';
 import 'package:hospital_mangement/view_model/database/network/end_points.dart';
 
@@ -18,47 +21,10 @@ class LoginCubit extends Cubit<LoginState> {
   String password = '';
   bool isPasswordVisible = true;
 
-  void emailChanged(String emailValue) {
-    email = emailValue;
-    emit(LoginLoading());
-  }
-
-  void passwordChanged(String passwordValue) {
-    password = passwordValue;
-    emit(LoginLoading());
-  }
-
   void togglePasswordVisibility() {
     isPasswordVisible = !isPasswordVisible;
     emit(PasswordShow());
   }
-
-  // void formValidation() {
-  //   if (!RegExp(validationEmail).hasMatch(email) ||
-  //       !RegExp(validationPassword).hasMatch(password)) {
-  //     emit(TextFieldInvalid(
-  //         error: 'Incorrect Email or Password. Please try again'));
-  //   } else {
-  //     emit(TextFieldValid());
-  //   }
-  // }
-
-  // void login(BuildContext context) {
-  //   debugPrint(email);
-  //   debugPrint(password);
-  //   final form = formKey.currentState;
-  //   if (form!.validate()) {
-  //     form.save();
-  //     // auth.login(email, password).then((response) {});
-  //   } else {
-  //     //   Flushbar(
-  //     //       title: "Invalid Form",
-  //     //       message: 'please complete the form properly',
-  //     //       duration: const Duration(seconds: 10))
-  //     //       .show(context);
-  //     // }
-  //   }
-  // }
 
 // late LoginModel loginModel;
   late String errorMessage;
@@ -66,6 +32,7 @@ class LoginCubit extends Cubit<LoginState> {
   void loginData({
     required String email,
     required String password,
+    required BuildContext context,
   }) async {
     emit(LoginLoading());
     var date = {
@@ -78,15 +45,34 @@ class LoginCubit extends Cubit<LoginState> {
     ).then((value) {
       // loginModel = LoginModel.fromJson(value.data);
       debugPrint(value.toString());
-
       if(value.data['status'].toString() == '1') {
         status = '1';
-        debugPrint(value.data['status'].toString());
+        CacheHelper.put(key: firstNameKey, value: value.data['data']['first_name']);
+        CacheHelper.put(key: lastNameKey, value: value.data['data']['last_name']);
+        CacheHelper.put(key: genderKey, value: value.data['data']['gender']);
+        CacheHelper.put(key: specialistKey, value: value.data['data']['specialist']);
+        CacheHelper.put(key: phoneNumberKey, value: value.data['data']['mobile']);
+        CacheHelper.put(key: emailKey, value: value.data['data']['email']);
+        CacheHelper.put(key: statusKey, value: value.data['data']['status']);
+        CacheHelper.put(key: dateOfBirthKey, value: value.data['data']['birthday']);
+        CacheHelper.put(key: addressKey, value: value.data['data']['address']);
+        CacheHelper.put(key: accessTokenKey, value: value.data['data']['access_token']);
+        userFirstName = CacheHelper.get(key: firstNameKey);
+        userLastName = CacheHelper.get(key: lastNameKey);
+        userGender = CacheHelper.get(key: genderKey);
+        userSpecialist = CacheHelper.get(key: specialistKey);
+        userPhoneNumber = CacheHelper.get(key: phoneNumberKey);
+        userEmail = CacheHelper.get(key: emailKey);
+        userStatus = CacheHelper.get(key: statusKey);
+        userDateOfBirth = CacheHelper.get(key: dateOfBirthKey);
+        userAddress = CacheHelper.get(key: addressKey);
+        userAccessToken = CacheHelper.get(key: accessTokenKey);
+
+        print(userAccessToken);
+        AllUsersCubit().get(context).getAllUsers(specialist: 'All');
       } else {
         status = '0';
         errorMessage = value.data['message'].toString();
-        debugPrint(value.data['status'].toString());
-        // debugPrint(value.data['message'].toString());
       }
       emit(LoginSuccess());
     }).catchError((onError) {

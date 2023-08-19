@@ -65,7 +65,7 @@ class _LoginLowerSectionState extends State<LoginLowerSection> {
                       labelDividerColor: mainColor,
                       controller: loginCubit.emailController,
                       isPassword: false,
-                      keyboardType: TextInputType.phone,
+                      keyboardType: TextInputType.emailAddress,
                       validator: (value) {
                         if (value!.trim().isEmpty) {
                           return 'Please enter email';
@@ -166,8 +166,10 @@ class _LoginLowerSectionState extends State<LoginLowerSection> {
                   if (loginCubit.formKey.currentState!.validate()) {
                     loginCubit.formKey.currentState!.save();
                     loginCubit.loginData(
+                      context: context,
                         email: loginCubit.emailController.text,
                         password: loginCubit.passwordController.text);
+                    // context.push(const HomeScreen());
                   } else {
                     debugPrint('fail');
                   }

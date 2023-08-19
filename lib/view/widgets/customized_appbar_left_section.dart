@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hospital_mangement/view/constant/data.dart';
 import 'package:hospital_mangement/view/constant/extensions.dart';
 import '../../view_model/cubit/home/home_cubit.dart';
 import '../constant/color_manager.dart';
@@ -37,13 +38,14 @@ class CustomizedAppbarLeftSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomText(
-                text: 'Ebrahim Khaled',
+                // text: 'Ebrahim Khaled',
+                text: '$userFirstName $userLastName',
                 color: black,
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
               ),
               CustomText(
-                text: 'Specialist, ${homeCubit.specialist}',
+                text: 'Specialist, $userSpecialist',
                 color: mainColor,
                 fontSize: textFont12,
               ),

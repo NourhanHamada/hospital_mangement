@@ -41,7 +41,7 @@ class ScaffoldCustom extends StatelessWidget {
       // backgroundColor: ThemeCubit.get(context).isDark ? darkBackground : white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 24, left: 24, right: 24,),
+          padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16,),
           child: body,
         ),
       ),

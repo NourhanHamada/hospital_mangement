@@ -5,6 +5,7 @@ import 'package:hospital_mangement/view/constant/extensions.dart';
 import 'package:hospital_mangement/view/screens/hr_screens/employee_list_screen.dart';
 import 'package:hospital_mangement/view_model/cubit/all_users/all_users_cubit.dart';
 import '../../constant/color_manager.dart';
+import '../../screens/startup_screens/startup_screen.dart';
 
 class FlutterAnimationProgressBar extends StatefulWidget {
   const FlutterAnimationProgressBar({Key? key}) : super(key: key);
@@ -27,8 +28,8 @@ class FlutterAnimationProgressBarState
       setState(() {
         if (progressValue == 100) {
           timer.cancel();
-          // context.push(StartupScreen());
-          context.push(const EmployeeListScreen());
+          context.push(const StartupScreen());
+          // context.push(const EmployeeListScreen());
         } else {
           progressValue++;
         }

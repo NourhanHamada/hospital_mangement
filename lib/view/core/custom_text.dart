@@ -38,6 +38,8 @@ class CustomText extends StatelessWidget {
     return Text(
       text.tr().toString(),
       textAlign: textAlign,
+      overflow: TextOverflow.ellipsis,
+      softWrap: true,
       style: GoogleFonts.poppins(
         decoration: textDecoration,
         decorationColor: decorationColor,

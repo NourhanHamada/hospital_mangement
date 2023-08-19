@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hospital_mangement/view/constant/data.dart';
 import 'package:hospital_mangement/view/core/custom_appbar.dart';
 import 'package:hospital_mangement/view/core/custom_text.dart';
 import 'package:hospital_mangement/view/core/scaffold_custom/scaffold_custom.dart';
@@ -41,38 +42,38 @@ class ProfileScreen extends StatelessWidget {
                       Align(
                         alignment: Alignment.center,
                         child: CustomText(
-                          text: 'Ebrahim Khaled',
+                          text: '$userFirstName $userLastName',
                           color: mainColor,
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      const ProfileScreenItem(
-                        text: 'Specialist - Doctor',
+                      ProfileScreenItem(
+                        text: 'Specialist - $userSpecialist',
                         icon: specialist,
                       ),
-                      const ProfileScreenItem(
-                        text: 'Male',
+                       ProfileScreenItem(
+                        text: userGender,
                         icon: gender,
                       ),
-                      const ProfileScreenItem(
-                        text: '29 - 3 - 1996',
+                      ProfileScreenItem(
+                        text: userDateOfBirth,
                         icon: calendar,
                       ),
-                      const ProfileScreenItem(
-                        text: 'Mansoura',
+                      ProfileScreenItem(
+                        text: userAddress,
                         icon: location,
                       ),
-                      const ProfileScreenItem(
-                        text: 'Single',
+                       ProfileScreenItem(
+                        text: userStatus,
                         icon: heart,
                       ),
-                      const ProfileScreenItem(
-                        text: 'ebrahim.k@gmail.com',
+                      ProfileScreenItem(
+                        text: userEmail,
                         icon: heart,
                       ),
-                      const ProfileScreenItem(
-                        text: '01013654378',
+                      ProfileScreenItem(
+                        text: userPhoneNumber,
                         icon: phone,
                       ),
                     ],
