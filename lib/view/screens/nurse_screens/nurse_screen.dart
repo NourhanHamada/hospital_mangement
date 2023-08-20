@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hospital_mangement/view/constant/extensions.dart';
+import 'package:hospital_mangement/view/screens/nurse_screens/nurse_calls_screen.dart';
 
 import '../../constant/assets.dart';
 import '../../constant/color_manager.dart';
@@ -37,9 +38,9 @@ class NurseScreen extends StatelessWidget {
                     width: 24.sp,
                   ),
                   onTap: () {
-                    // context.push(
-                    //   const CallsScreen(),
-                    // );
+                    context.push(
+                      const NurseCallsScreen(),
+                    );
                   },
                 ),
                 SizedBox(

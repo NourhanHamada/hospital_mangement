@@ -11,6 +11,7 @@ const String login = 'login';
 const String attendance = 'attendance';
 
 // calls endpoints
+const String createCallEndPoint = 'calls';
 
 
 const String baseImage = '';

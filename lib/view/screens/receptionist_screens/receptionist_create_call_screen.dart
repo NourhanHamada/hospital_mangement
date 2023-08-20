@@ -9,6 +9,7 @@ import 'package:hospital_mangement/view/core/component.dart';
 import 'package:hospital_mangement/view/core/custom_appbar.dart';
 import 'package:hospital_mangement/view/core/textfields/custom_text_form_filed.dart';
 import 'package:hospital_mangement/view/screens/receptionist_screens/select_doctor_screen.dart';
+import 'package:hospital_mangement/view_model/cubit/all_users/all_users_cubit.dart';
 import 'package:hospital_mangement/view_model/cubit/create_call/create_call_cubit.dart';
 import '../../core/scaffold_custom/scaffold_custom.dart';
 
@@ -31,6 +32,10 @@ class _ReceptionistCreateCallScreenState
   @override
   Widget build(BuildContext context) {
     CreateCallCubit createCallCubit = BlocProvider.of(
+      context,
+      listen: true,
+    );
+    AllUsersCubit allUsersCubit = BlocProvider.of(
       context,
       listen: true,
     );
@@ -58,6 +63,9 @@ class _ReceptionistCreateCallScreenState
                       } else if (!RegExp(validationName)
                           .hasMatch(value.trim())) {
                         return 'Patient Name is not valid';
+                      }
+                      if (value.trim().length < 2) {
+                        return 'Patient name must be at least 1 characters';
                       }
                       return null;
                     },
@@ -144,115 +152,6 @@ class _ReceptionistCreateCallScreenState
                   const SizedBox(
                     height: 24,
                   ),
-                  // DropdownButtonFormField2<String>(
-                  //   value:
-                  //       createCallCubit.selectDoctorController.text.isNotEmpty
-                  //           ? createCallCubit.selectDoctorController.text
-                  //           : null,
-                  //   isExpanded: true,
-                  //   decoration: InputDecoration(
-                  //     fillColor: white,
-                  //     filled: true,
-                  //     isDense: true,
-                  //     errorStyle: const TextStyle(
-                  //         color: orangeRed,
-                  //         fontSize: 12,
-                  //         fontWeight: FontWeight.w500),
-                  //     floatingLabelBehavior: FloatingLabelBehavior.auto,
-                  //     border: OutlineInputBorder(
-                  //       borderSide: const BorderSide(
-                  //         color: grey400,
-                  //         width: 1,
-                  //       ),
-                  //       borderRadius: BorderRadius.circular(
-                  //         10,
-                  //       ),
-                  //     ),
-                  //     focusedBorder: OutlineInputBorder(
-                  //         borderSide: const BorderSide(
-                  //           color: mainColor,
-                  //           width: 2,
-                  //         ),
-                  //         borderRadius: BorderRadius.circular(10)),
-                  //     enabledBorder: OutlineInputBorder(
-                  //       borderRadius: BorderRadius.circular(10),
-                  //       borderSide: const BorderSide(
-                  //         color: grey400,
-                  //       ),
-                  //     ),
-                  //     contentPadding: const EdgeInsets.symmetric(
-                  //       vertical: 10,
-                  //       horizontal: 16,
-                  //     ),
-                  //     errorBorder: OutlineInputBorder(
-                  //         borderSide: const BorderSide(
-                  //           color: Colors.red,
-                  //           // color: Colors.transparent,
-                  //         ),
-                  //         borderRadius: BorderRadius.circular(10)),
-                  //     focusedErrorBorder: OutlineInputBorder(
-                  //         borderSide: const BorderSide(
-                  //           color: Colors.red,
-                  //           // color: Colors.transparent,
-                  //         ),
-                  //         borderRadius: BorderRadius.circular(10)),
-                  //   ),
-                  //   hint: const Text(
-                  //     'Select Doctor',
-                  //     style: TextStyle(
-                  //       fontSize: 15,
-                  //       color: grey800,
-                  //     ),
-                  //   ),
-                  //   style: const TextStyle(color: darkBackground),
-                  //   items: doctors
-                  //       .map(
-                  //         (item) => DropdownMenuItem<String>(
-                  //           value: item,
-                  //           child: Text(
-                  //             item,
-                  //             style: const TextStyle(
-                  //               fontSize: 14,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       )
-                  //       .toList(),
-                  //   validator: (value) {
-                  //     if (value == null) {
-                  //       return 'Please select Doctor.';
-                  //     }
-                  //     return null;
-                  //   },
-                  //   onChanged: (value) {
-                  //     createCallCubit.selectDoctorController.text =
-                  //         value!.toString();
-                  //   },
-                  //   onSaved: (value) {
-                  //     // selectedValue = value.toString();
-                  //     // userInsertedField = value!.toString();
-                  //   },
-                  //   buttonStyleData: const ButtonStyleData(
-                  //       // padding: EdgeInsets.only(right: 8),
-                  //       ),
-                  //   iconStyleData: const IconStyleData(
-                  //     icon: Icon(
-                  //       Icons.arrow_drop_down,
-                  //       color: grey600,
-                  //     ),
-                  //     iconSize: 24,
-                  //   ),
-                  //   dropdownStyleData: DropdownStyleData(
-                  //     maxHeight: context.screenHeight / 4,
-                  //     decoration: BoxDecoration(
-                  //       borderRadius: BorderRadius.circular(15),
-                  //       color: white,
-                  //     ),
-                  //   ),
-                  //   menuItemStyleData: const MenuItemStyleData(
-                  //     padding: EdgeInsets.only(left: 8),
-                  //   ),
-                  // ),
                   TextFormFieldsCustom(
                     enableInteractive: false,
                     controller: createCallCubit.selectDoctorController,
@@ -266,8 +165,12 @@ class _ReceptionistCreateCallScreenState
                       }
                       return null;
                     },
-                    suffixIcon: const Icon(Icons.arrow_right, size: 30,),
-                    onTap: (){
+                    suffixIcon: const Icon(
+                      Icons.arrow_right,
+                      size: 30,
+                    ),
+                    onTap: () {
+                      allUsersCubit.getAllUsers(specialist: 'doctor');
                       context.push(const SelectDoctorScreen());
                     },
                   ),
@@ -333,15 +236,55 @@ class _ReceptionistCreateCallScreenState
               ),
             ),
           ),
-          MainButton(
-            title: 'Send Call',
-            onTap: () {
-              if (createCallCubit.callFormKey.currentState!.validate()) {
+          BlocConsumer<CreateCallCubit, CreateCallState>(
+            listener: (context, state) {
+              if (state is CreateCallLoading) {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: mainColor,
+                        ),
+                      );
+                    });
+              }
+              if (state is CreateCallSuccess) {
+                context.pop();
                 showToast(
                   message: 'Call Sent Successfully',
                   color: toastColor,
                 );
               }
+              if (state is CreateCallFail) {
+                context.pop();
+                showToast(
+                  message: 'Try again later',
+                  color: toastColor,
+                );
+              }
+            },
+            builder: (context, state) {
+              return MainButton(
+                title: 'Send Call',
+                onTap: () {
+                  if (createCallCubit.callFormKey.currentState!.validate()) {
+                    createCallCubit.createCall(
+                      patientName: createCallCubit.patientNameController.text,
+                      doctorId: '1',
+                      patientAge: createCallCubit.patientAgeController.text,
+                      phone: createCallCubit.patientPhoneNumberController.text,
+                      description:
+                          createCallCubit.caseDescriptionController.text,
+                    );
+
+                    debugPrint('=======================');
+                    debugPrint(createCallCubit.selectDoctorController.text);
+                    debugPrint(createCallCubit.id.toString());
+                    debugPrint('=======================');
+                  }
+                },
+              );
             },
           ),
         ],
