@@ -10,3 +10,5 @@ class GetAllUsersLoading extends AllUsersState {}
 class GetAllUsersSuccess extends AllUsersState {}
 
 class GetAllUsersFail extends AllUsersState {}
+
+class FilterSearchData extends AllUsersState {}
